@@ -1,0 +1,30 @@
+﻿<Window x:Class="Battleships.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Battleships"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Background="white">
+        <Grid.Resources>
+            <Style TargetType="Button">
+                <Setter Property="Width" Value="400"/>
+                <Setter Property="Height" Value="75"/>
+                <Setter Property="FontSize" Value="45"/>
+                <Setter Property="FontFamily" Value="Arial Black"/>
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <Button Grid.Row="1" Click="PlayButtonClicked" Content="Play"/>
+            <Button Grid.Row="2" Click="OptionsButtonClicked" Content="Options"/>
+            <Button Grid.Row="3" Click="ExitButtonClicked" Content="Exit"/>
+    </Grid>
+</Window>
