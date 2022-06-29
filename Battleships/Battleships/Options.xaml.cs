@@ -38,8 +38,11 @@ namespace Battleships
         }
         public void OptionsSettings_SelectionChanged(object sender, EventArgs e)
         {
-            string? selectedValue = comboBoxResolutionSize.Text;
-            Debug.WriteLine($"Resolution: {selectedValue}");
+            string selectedValue = comboBoxResolutionSize.Text;
+            if (selectedValue != null)
+            {
+                OptionsSettings.Instance.SetResolution = selectedValue;
+            }
         }
     }
 }

@@ -2,12 +2,14 @@
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows.Controls;
 
 namespace Battleships
 {
     public class OptionsSettings : ObservableObject
     {
+        private static OptionsSettings instance = null;
+        private static readonly object padlock = new object();
+
         public OptionsSettings()
         {
             Task.Run(() =>
@@ -18,6 +20,17 @@ namespace Battleships
                     Thread.Sleep(2000);
                 }
             });
+        }
+        public static OptionsSettings Instance
+        {
+            get
+            {
+                lock (padlock)
+                {
+                    if (instance == null) instance = new OptionsSettings();
+                    return instance;
+                }
+            }
         }
 
         private string _resolution;
@@ -66,7 +79,8 @@ namespace Battleships
 
         private void ConvertResolution(string toConvert)
         {
-            string[] temp = toConvert.Split("x");
+            if (toConvert == null || toConvert == "") return;
+            string[] temp = toConvert.Split(new char[] {'x'});
             int width = Convert.ToInt16(temp[0]);
             int height = Convert.ToInt16(temp[1]);
             UpdateResolution(width, height);
